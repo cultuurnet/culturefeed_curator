@@ -38,7 +38,7 @@ function culturefeed_curator_flush_caches() {
 }
 
 /**
- * Implements hook_preprocess_culturefeed_agenda_detail().
+ * Implements hook_preprocess_culturefeed_event().
  */
 function culturefeed_curator_preprocess_culturefeed_event(&$variables) {
 
