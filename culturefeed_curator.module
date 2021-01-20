@@ -44,6 +44,7 @@ function culturefeed_curator_preprocess_culturefeed_event(&$variables) {
 
   // Check for external articles.
   $variables['external_article_links'] = [];
+  $variables['external_articles'] = [];
   $curatorClient = culturefeed_get_curator_client();
 
   try {
@@ -63,6 +64,11 @@ function culturefeed_curator_preprocess_culturefeed_event(&$variables) {
         $path = isset($url['path']) ? $url['path'] : '';
 
         $new_url = $scheme . $host . $path . '?' . http_build_query($query_params);
+
+        $variables['external_articles'][] = [
+          'article' => $external_article,
+          'url' => $new_url,
+        ];
 
         $variables['external_article_links'][] = l("$external_article->headline ($external_article->publisher)", $new_url, [
           'attributes' => [
